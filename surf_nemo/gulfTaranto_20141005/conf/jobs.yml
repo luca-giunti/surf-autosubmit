@@ -1,0 +1,10 @@
+new_job:
+  CONFIGURE:
+    FILE: experiment/configure.sh
+    PLATFORM: LOCAL
+    RUNNING: once
+  RUN:
+    FILE: experiment/run.sh
+    PLATFORM: LOCAL
+    RUNNING: once
+    DEPENDENCIES: CONFIGURE
