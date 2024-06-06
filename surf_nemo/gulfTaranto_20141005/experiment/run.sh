@@ -36,6 +36,9 @@ export path_datasets_container="/media/shared_volumes/Datasets"
 export path_datasets_experiment_offline_container="/media/shared_volumes/Datasets_Experiment_Offline"
 export path_datasets_precomputed_container="/media/shared_volumes/Datasets_Precomputed"
 
+# set image name
+export image_name="cmccsurf/surf_nemo:X64-dev"
+
 cd - || exit
 
 docker run -e ID_EXP=$id_exp \
@@ -52,4 +55,4 @@ docker run -e ID_EXP=$id_exp \
             --name $id_exp \
             --memory $memory \
             --shm-size $shm_size \
-            $1
+            $image_name
