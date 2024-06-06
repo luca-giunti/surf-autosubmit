@@ -1,11 +1,11 @@
 #!/bin/bash
 
 # Inflate the main dataset
-tar -xzf surf_datasets_tailored.tar.gz -C "$TARGET"
+tar -xzf "surf_datasets_tailored.tar.gz" -C "surf_datasets_tailored"
 
 # Inflate datasets offline
 for archive in datasets_offline/*.tar.gz; do
-    tar -xzf "$archive" -C datasets_offline
+    tar -xzf "$archive" -C "datasets_offline"
 done
 
 # Set container variables
