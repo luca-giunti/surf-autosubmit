@@ -1,10 +1,10 @@
 new_job:
   CONFIGURE:
-    FILE: experiment/configure.sh
+    FILE: surf_nemo/gulfTaranto_20141005/experiment/configure.sh
     PLATFORM: LOCAL
     RUNNING: once
   RUN:
-    FILE: experiment/run.sh
+    FILE: surf_nemo/gulfTaranto_20141005/experiment/run.sh
     PLATFORM: LOCAL
     RUNNING: once
     DEPENDENCIES: CONFIGURE
