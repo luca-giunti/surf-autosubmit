@@ -1,4 +1,4 @@
-new_job:
+JOBS:
   CONFIGURE:
     FILE: surf_nemo/gulfTaranto_20141005/experiment/configure.sh
     PLATFORM: LOCAL
