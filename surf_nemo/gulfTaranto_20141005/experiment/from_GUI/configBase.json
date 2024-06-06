@@ -227,7 +227,7 @@
                   "id": 1,
                   "gui_name": "Surface boundary conditionsn generation",
                   "name": "surface_bc",
-                  "value": true,
+                  "value": false,
                   "dtype": "bool",
                   "description": "Enables the generation of the regridded atmospheric forcings files, used for surface boundary conditions."
                 },
@@ -235,7 +235,7 @@
                   "id": 2,
                   "gui_name": "Initial conditions generation",
                   "name": "ocean_ic",
-                  "value": true,
+                  "value": false,
                   "dtype": "bool",
                   "description": "Enables the generation of the regridded ocean files for the initial conditions."
                 },
@@ -243,7 +243,7 @@
                   "id": 3,
                   "gui_name": "Lateral boundary conditions generation",
                   "name": "lateral_bc",
-                  "value": true,
+                  "value": false,
                   "dtype": "bool",
                   "description": "Enables the generation of the regridded ocean files for the lateral boundary conditions."
                 },
@@ -251,7 +251,7 @@
                   "id": 4,
                   "gui_name": "Tidal forcing generation",
                   "name": "regridPreTide",
-                  "value": true,
+                  "value": false,
                   "dtype": "bool",
                   "description": "Enables the generation of the regridded tidal forcing files."
                 },
@@ -259,7 +259,7 @@
                   "id": 5,
                   "gui_name": "Simulation execution",
                   "name": "simulation",
-                  "value": true,
+                  "value": false,
                   "dtype": "bool",
                   "description": "Enables the execution of the ocean simulation."
                 }
