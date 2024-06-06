@@ -1,5 +1,8 @@
 #!/bin/bash
 
+echo "DEBUG"
+pwd
+
 # Inflate the main dataset
 tar -xzf "surf_datasets_tailored.tar.gz" -C "surf_datasets_tailored"
 
