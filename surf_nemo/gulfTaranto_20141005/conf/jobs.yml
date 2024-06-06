@@ -1,10 +1,5 @@
 JOBS:
-  CONFIGURE:
-    FILE: surf_nemo/gulfTaranto_20141005/experiment/configure.sh
-    PLATFORM: LOCAL
-    RUNNING: once
   RUN:
     FILE: surf_nemo/gulfTaranto_20141005/experiment/run.sh
     PLATFORM: LOCAL
     RUNNING: once
-    DEPENDENCIES: CONFIGURE
