@@ -3,7 +3,8 @@
 cd data || exit
 
 export task_id="lateral_bc"
-export id_exp="gulfTaranto_20141005_${task_id}"
+export container_name="gulfTaranto_20141005_${task_id}"
+export id_exp="gulfTaranto_20141005"
 export config_free_filename="configBase_${task_id}.json"
 
 # Set container variables
@@ -46,9 +47,9 @@ docker run -e ID_EXP=$id_exp \
             -v ${path_datasets_host}:${path_datasets_container} \
             -v ${path_datasets_experiment_offline_host}:${path_datasets_experiment_offline_container} \
             ${path_datasets_precomputed_host:+-v ${path_datasets_precomputed_host}:${path_datasets_precomputed_container}} \
-            --name $id_exp \
+            --name $container_name \
             --memory $memory \
             --shm-size $shm_size \
             $image_name
 
-docker rm "gulfTaranto_20141005_${task_id}"
+docker rm container_name
