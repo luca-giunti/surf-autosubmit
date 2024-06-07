@@ -48,3 +48,5 @@ docker run -e ID_EXP=$id_exp \
             --memory $memory \
             --shm-size $shm_size \
             $image_name
+
+docker rm gulfTaranto_20141005
