@@ -1,0 +1,11 @@
+PLATFORMS:
+  COMPUTING_NODE:
+    TYPE: ps
+    HOST: autosubmit-computing-node-ssh-422041
+    PROJECT: test
+    USER: linuxserver.io
+    QUEUE: debug
+    SCRATCH_DIR: /home/onyxia/work
+    ADD_PROJECT_TO_HOST: false
+    MAX_WALLCLOCK: 48:00
+    TEMP_DIR: ''
