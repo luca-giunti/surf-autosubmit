@@ -1,9 +1,9 @@
 #!/bin/bash
 
-export scratch_dir_remote="/home/onyxia/work/test/linuxserver.io/"
-cd ${scratch_dir_remote}/data || exit
+export scratch_dir_path="/home/onyxia/work/test/linuxserver.io/"
+cd ${scratch_dir_path}/data || exit
 
-export task_id="ocean_ic"
+export task_id="lateral_bc"
 export container_name="gulfTaranto_20141005_${task_id}"
 export id_exp="gulfTaranto_20141005"
 export config_free_filename="configBase_${task_id}.json"
