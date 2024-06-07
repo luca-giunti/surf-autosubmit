@@ -1,40 +1,40 @@
 JOBS:
   PREPATE_DATA:
-    FILE: surf_nemo/gulfTaranto_20141005/experiment/prepare_data.sh
+    FILE: surf_nemo/gulfTaranto_20141005/scripts_hpc/prepare_data.sh
     PLATFORM: COMPUTING_NODE
     RUNNING: once
   GRID_GENERATION:
-    FILE: surf_nemo/gulfTaranto_20141005/experiment/run_grid_generation.sh
+    FILE: surf_nemo/gulfTaranto_20141005/scripts_hpc/run_grid_generation.sh
     PLATFORM: COMPUTING_NODE
     RUNNING: once
     PROCESSORS: 1
     DEPENDENCIES: PREPATE_DATA
   SURFACE_BC:
-    FILE: surf_nemo/gulfTaranto_20141005/experiment/run_surface_bc.sh
+    FILE: surf_nemo/gulfTaranto_20141005/scripts_hpc/run_surface_bc.sh
     PLATFORM: COMPUTING_NODE
     RUNNING: once
     PROCESSORS: 1
     DEPENDENCIES: PREPATE_DATA GRID_GENERATION
   OCEAN_IC:
-    FILE: surf_nemo/gulfTaranto_20141005/experiment/run_ocean_ic.sh
+    FILE: surf_nemo/gulfTaranto_20141005/scripts_hpc/run_ocean_ic.sh
     PLATFORM: COMPUTING_NODE
     RUNNING: once
     PROCESSORS: 1
     DEPENDENCIES: PREPATE_DATA GRID_GENERATION
   LATERAL_BC:
-    FILE: surf_nemo/gulfTaranto_20141005/experiment/run_lateral_bc.sh
+    FILE: surf_nemo/gulfTaranto_20141005/scripts_hpc/run_lateral_bc.sh
     PLATFORM: COMPUTING_NODE
     RUNNING: once
     PROCESSORS: 1
     DEPENDENCIES: PREPATE_DATA GRID_GENERATION
   SIMULATION:
-    FILE: surf_nemo/gulfTaranto_20141005/experiment/run_simulation.sh
+    FILE: surf_nemo/gulfTaranto_20141005/scripts_hpc/run_simulation.sh
     PLATFORM: COMPUTING_NODE
     RUNNING: once
     PROCESSORS: 1
     DEPENDENCIES: PREPATE_DATA GRID_GENERATION SURFACE_BC OCEAN_IC LATERAL_BC
   POSTPROCESSING:
-    FILE: surf_nemo/gulfTaranto_20141005/experiment/run_postprocessing.sh
+    FILE: surf_nemo/gulfTaranto_20141005/scripts_hpc/run_postprocessing.sh
     PLATFORM: COMPUTING_NODE
     RUNNING: once
     PROCESSORS: 8
