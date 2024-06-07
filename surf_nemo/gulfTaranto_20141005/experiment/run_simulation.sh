@@ -52,4 +52,4 @@ docker run -e ID_EXP=$id_exp \
             --shm-size $shm_size \
             $image_name
 
-docker rm container_name
+docker rm $container_name
