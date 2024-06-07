@@ -13,7 +13,7 @@ export overwrite="false"
 # Set user type and config free
 export USER_TYPE="base"
 export path_from_gui_host="$(pwd)/from_GUI"
-export config_free_filename="configBase.json"
+export config_free_filename="configBase_simulation.json"
 
 # Set mount points for shared volumes on the host
 export path_experiments_host="/tmp/Experiments" && mkdir -p $path_experiments_host
