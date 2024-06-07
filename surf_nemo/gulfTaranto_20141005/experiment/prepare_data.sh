@@ -1,8 +1,5 @@
 #!/bin/bash
 
-echo "DEBUG"
-pwd
-
 cd data || exit
 
 # Inflate the main dataset
