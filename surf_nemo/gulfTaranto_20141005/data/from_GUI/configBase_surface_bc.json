@@ -1,0 +1,3007 @@
+{
+  "items": [
+    {
+      "id": 0,
+      "gui_name": "General",
+      "name": "general",
+      "description": "General simulation settings.",
+      "items": [
+        {
+          "id": 0,
+          "gui_name": "GUI settings",
+          "name": "gui",
+          "description": "Ocean model and configuration level choice.",
+          "items": [
+            {
+              "id": 0,
+              "gui_name": "Ocean model",
+              "name": "model",
+              "value": "nemo",
+              "dtype": "str",
+              "description": "Ocean model to be used for the downscaling experiment. Currently, NEMO (Madec, 2008) and Shyfem (Umgiesser et al., 2004) are supported.",
+              "constraints": {
+                "options": [
+                  "nemo",
+                  "shyfem"
+                ]
+              }
+            },
+            {
+              "id": 1,
+              "gui_name": "Configuration level",
+              "name": "config_level",
+              "value": "base",
+              "dtype": "str",
+              "description": "User configuration level. Choose base mode for a straightforward experience, or expert mode to access advanced features and configuration options.",
+              "constraints": {
+                "options": [
+                  "base",
+                  "expert"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "id": 1,
+          "gui_name": "Experiment settings",
+          "name": "experiment",
+          "description": "Spatial and temporal settings for the simulation.",
+          "items": [
+            {
+              "id": 0,
+              "gui_name": "Experiment name",
+              "name": "experiment_name",
+              "value": "gulfTaranto",
+              "dtype": "str",
+              "description": "Unique identifier for the experiment."
+            },
+            {
+              "id": 1,
+              "gui_name": "Domain",
+              "name": "domain",
+              "description": "Spatial domain settings.",
+              "items": [
+                {
+                  "id": 0,
+                  "gui_name": "Horizontal grid",
+                  "name": "domHgr",
+                  "description": "Horizontal grid settings.",
+                  "items": [
+                    {
+                      "id": 0,
+                      "gui_name": "resolution",
+                      "name": "jp_cfg",
+                      "value": 48,
+                      "dtype": "int",
+                      "units": "1/deg",
+                      "constraints": {
+                        "min": 4,
+                        "max": 1000
+                      },
+                      "description": "Child model resolution (e.g. 1/48 deg)"
+                    },
+                    {
+                      "id": 1,
+                      "gui_name": "West longitude",
+                      "name": "ppglam0",
+                      "value": 16.4375,
+                      "dtype": "float",
+                      "units": "°E",
+                      "constraints": {
+                        "min": -180.0,
+                        "max": 180.0
+                      },
+                      "description": "Longitude of the first row and column of the T-grid."
+                    },
+                    {
+                      "id": 2,
+                      "gui_name": "East longitude",
+                      "name": "ppglam1",
+                      "value": 18.3750,
+                      "dtype": "float",
+                      "units": "°E",
+                      "constraints": {
+                        "min": -180.0,
+                        "max": 180.0
+                      },
+                      "description": "Longitude of the last row and column of the T-grid."
+                    },
+                    {
+                      "id": 3,
+                      "gui_name": "South latitude",
+                      "name": "ppgphi0",
+                      "value": 38.9375,
+                      "dtype": "float",
+                      "units": "°N",
+                      "constraints": {
+                        "min": -90.0,
+                        "max": 90.0
+                      },
+                      "description": "Latitude of the first row and column of the T-grid."
+                    },
+                    {
+                      "id": 4,
+                      "gui_name": "North latitude",
+                      "name": "ppgphi1",
+                      "value": 40.5625,
+                      "dtype": "float",
+                      "units": "°N",
+                      "constraints": {
+                        "min": -90.0,
+                        "max": 90.0
+                      },
+                      "description": "Latitude of the last row and column of the T-grid."
+                    }
+                  ]
+                },
+                {
+                  "id": 1,
+                  "gui_name": "Vertical grid",
+                  "name": "domZgrzco",
+                  "description": "Vertical grid settings.",
+                  "items": [
+                    {
+                      "id": 0,
+                      "gui_name": "Number of Vertical levels",
+                      "name": "jpkdta",
+                      "value": 120,
+                      "dtype": "int",
+                      "constraints": {
+                        "min": 10,
+                        "max": 1000
+                      },
+                      "description": "Number of vertical levels for the grid."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": 2,
+              "gui_name": "Time",
+              "name": "run_management",
+              "description": "Date and time settings.",
+              "items": [
+                {
+                  "id": 0,
+                  "gui_name": "Start date",
+                  "name": "start_date",
+                  "value": "20141005",
+                  "dtype": "str",
+                  "constraints": {
+                    "format": "%Y%m%d"
+                  },
+                  "description": "Start date of the simulation. Format: YYYYMMDD (the run starts at 00:00:00)."
+                },
+                {
+                  "id": 1,
+                  "gui_name": "Number of days",
+                  "name": "n_days",
+                  "value": 6,
+                  "dtype": "int",
+                  "constraints": {
+                    "min": 1
+                  },
+                  "description": "Total number of simulation days (first and last day are included)."
+                },
+                {
+                  "id": 2,
+                  "gui_name": "Number of spin-up days",
+                  "name": "n_days_spinup",
+                  "value": 1,
+                  "dtype": "int",
+                  "constraints": {
+                    "min": 1
+                  },
+                  "description": "Number of spin-up days to be considered before the first day of the simulation."
+                },
+                {
+                  "id": 3,
+                  "gui_name": "Number of restart days",
+                  "name": "n_days_chunk",
+                  "value": 1,
+                  "dtype": "int",
+                  "constraints": {
+                    "min": 1
+                  },
+                  "description": "Number of days for each restart simulation chunk."
+                }
+              ]
+            },
+            {
+              "id": 3,
+              "gui_name": "Enabled tasks",
+              "name": "tasks_management",
+              "description": "Tasks to be executed during the simulation. For tasks that are not enabled, pre-computed data caches must exist (e.g. from previous simulation runs).",
+              "items": [
+                {
+                  "id": 0,
+                  "gui_name": "Downscaled grid generation",
+                  "name": "grid_generation",
+                  "value": false,
+                  "dtype": "bool",
+                  "description": "Enables the execution the child grid generation task."
+                },
+                {
+                  "id": 1,
+                  "gui_name": "Surface boundary conditionsn generation",
+                  "name": "surface_bc",
+                  "value": true,
+                  "dtype": "bool",
+                  "description": "Enables the generation of the regridded atmospheric forcings files, used for surface boundary conditions."
+                },
+                {
+                  "id": 2,
+                  "gui_name": "Initial conditions generation",
+                  "name": "ocean_ic",
+                  "value": false,
+                  "dtype": "bool",
+                  "description": "Enables the generation of the regridded ocean files for the initial conditions."
+                },
+                {
+                  "id": 3,
+                  "gui_name": "Lateral boundary conditions generation",
+                  "name": "lateral_bc",
+                  "value": false,
+                  "dtype": "bool",
+                  "description": "Enables the generation of the regridded ocean files for the lateral boundary conditions."
+                },
+                {
+                  "id": 4,
+                  "gui_name": "Tidal forcing generation",
+                  "name": "regridPreTide",
+                  "value": false,
+                  "dtype": "bool",
+                  "description": "Enables the generation of the regridded tidal forcing files."
+                },
+                {
+                  "id": 5,
+                  "gui_name": "Simulation execution",
+                  "name": "simulation",
+                  "value": false,
+                  "dtype": "bool",
+                  "description": "Enables the execution of the ocean simulation."
+                }
+              ]
+            },
+            {
+              "id": 4,
+              "gui_name": "Nesting",
+              "name": "nesting",
+              "description": "Nesting settings.",
+              "items": [
+                {
+                  "id": 0,
+                  "gui_name": "Number of nesting levels",
+                  "name": "nnest",
+                  "value": 1,
+                  "dtype": "int",
+                  "constraints": {
+                    "min": 1,
+                    "max": 3
+                  },
+                  "description": "Number of nesting for Multiple downscaling experiment. If > 1 consecutive nested models will be implemented with increasing grid resolutions"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 1,
+      "gui_name": "Downscaled grid generation",
+      "name": "grid_generation",
+      "description": "Generation of the 3D downscaled grid.",
+      "items": [
+        {
+          "id": 0,
+          "gui_name": "Coastline",
+          "name": "coastline",
+          "description": "Coastline settings.",
+          "items": [
+            {
+              "id": 0,
+              "gui_name": "Input product",
+              "name": "input_product",
+              "description": "Coastline data input product.",
+              "references": [
+              ],
+              "value": "offline",
+              "dtype": "str",
+              "constraints": {
+                "options": [
+                  "offline"
+                ]
+              }
+            },
+            {
+              "id": 1,
+              "gui_name": "Offline product settings",
+              "name": "offline",
+              "items": [
+                {
+                  "id": 0,
+                  "gui_name": "Username",
+                  "name": "username",
+                  "value": null,
+                  "dtype": "str",
+                  "description": "Username to access the dataset from a remote ftp server"
+                },
+                {
+                  "id": 1,
+                  "gui_name": "Password",
+                  "name": "password",
+                  "value": null,
+                  "dtype": "str",
+                  "description": "Password to access the dataset from a remote ftp server"
+                },
+                {
+                  "id": 2,
+                  "gui_name": "URL",
+                  "name": "url",
+                  "value": "file:///media/shared_volumes/Datasets/coastline/GSHHS_shp/h",
+                  "dtype": "str",
+                  "constraints": {
+                    "startsWith": [
+                      "file:///",
+                      "ftp:///"
+                    ]
+                  },
+                  "description": "Dataset url (can be a local file or a remote ftp server)."
+                },
+                {
+                  "id": 3,
+                  "gui_name": "Filenames",
+                  "name": "filenames",
+                  "items": [
+                    {
+                      "id": 0,
+                      "gui_name": "Lands",
+                      "name": "lands",
+                      "value": "GSHHS_h_L1.shp",
+                      "dtype": "str",
+                      "description": "Filename of the lands shapefile"
+                    },
+                    {
+                      "id": 1,
+                      "gui_name": "Islands",
+                      "name": "islands",
+                      "value": null,
+                      "dtype": "str",
+                      "description": "Filename of the islands shapefile"
+                    },
+                    {
+                      "id": 2,
+                      "gui_name": "Lakes",
+                      "name": "lakes",
+                      "value": null,
+                      "dtype": "str",
+                      "description": "Filename of the lakes shapefile"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": 1,
+          "gui_name": "Bathymetry",
+          "name": "bathymetry",
+          "description": "Bathymetry settings.",
+          "items": [
+            {
+              "id": 0,
+              "gui_name": "Input product",
+              "name": "input_product",
+              "description": "Bathymetry data input product.",
+              "references": [
+                "https://www.gebco.net/data_and_products/gridded_bathymetry_data/"
+              ],
+              "value": "offline",
+              "dtype": "str",
+              "constraints": {
+                "options": [
+                  "gebco_2020",
+                  "offline"
+                ]
+              }
+            },
+            {
+              "id": 2,
+              "gui_name": "Offline product settings",
+              "name": "offline",
+              "items": [
+                {
+                  "id": 0,
+                  "gui_name": "Interpolate",
+                  "name": "interpolate",
+                  "value": true,
+                  "dtype": "bool",
+                  "description": "Enables the use of the bathymetry regridding, adaptation based on coastline datasets and custom manipulations."
+                },
+                {
+                  "id": 1,
+                  "gui_name": "Username",
+                  "name": "username",
+                  "value": null,
+                  "dtype": "str",
+                  "description": "Username to access the dataset from a remote ftp server"
+                },
+                {
+                  "id": 2,
+                  "gui_name": "Password",
+                  "name": "password",
+                  "value": null,
+                  "dtype": "str",
+                  "description": "Password to access the dataset from a remote ftp server"
+                },
+                {
+                  "id": 3,
+                  "gui_name": "URL",
+                  "name": "url",
+                  "value": "file:///media/shared_volumes/Datasets/bathymetry",
+                  "dtype": "str",
+                  "constraints": {
+                    "startsWith": [
+                      "file:///",
+                      "ftp:///"
+                    ]
+                  },
+                  "description": "Dataset url (can be a local file or a remote ftp server)."
+                },
+                {
+                  "id": 4,
+                  "gui_name": "Filenames",
+                  "name": "filenames",
+                  "value": "gebco_2014_taranto.nc",
+                  "dtype": "str",
+                  "description": "Input dataset."
+                },
+                {
+                  "id": 5,
+                  "gui_name": "Dimensions",
+                  "name": "dims",
+                  "items": [
+                    {
+                      "id": 0,
+                      "gui_name": "Longitude",
+                      "name": "lon",
+                      "value": "lon",
+                      "dtype": "str",
+                      "description": "Name of the longitude dimension."
+                    },
+                    {
+                      "id": 1,
+                      "gui_name": "Latitude",
+                      "name": "lat",
+                      "value": "lat",
+                      "dtype": "str",
+                      "description": "Name of the latitude dimension."
+                    }
+                  ]
+                },
+                {
+                  "id": 6,
+                  "gui_name": "Coordinates",
+                  "name": "coords",
+                  "items": [
+                    {
+                      "id": 0,
+                      "gui_name": "Longitude",
+                      "name": "lon",
+                      "value": "lon",
+                      "dtype": "str",
+                      "description": "Name of the longitude coordinate."
+                    },
+                    {
+                      "id": 1,
+                      "gui_name": "Latitude",
+                      "name": "lat",
+                      "value": "lat",
+                      "dtype": "str",
+                      "description": "Name of the latitude coordinate."
+                    }
+                  ]
+                },
+                {
+                  "id": 7,
+                  "gui_name": "Variables",
+                  "name": "vars",
+                  "items": [
+                    {
+                      "id": 0,
+                      "gui_name": "Elevation",
+                      "name": "elevation",
+                      "value": "elevation",
+                      "dtype": "str",
+                      "description": "Name of the elevation variable."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": 3,
+              "gui_name": "Modify",
+              "name": "modify",
+              "description": "Modify bathymetry data.",
+              "items": [
+                {
+                  "id": 0,
+                  "gui_name": "Global offset",
+                  "name": "global_offset",
+                  "value": 0.0,
+                  "dtype": "float",
+                  "units": "m",
+                  "constraints": {
+                    "min": 0.0,
+                    "max": 100.0
+                  },
+                  "description": "Global offset in meters to apply to the bathymetry (es. caspian Sea 28 meter). Can be negative or positive."
+                },
+                {
+                  "id": 1,
+                  "gui_name": "Regions",
+                  "name": "regions",
+                  "description": "coordinates of a list of rectangular region in which to apply depth modification",
+                  "items": [
+                    {
+                      "id": 0,
+                      "gui_name": "Coordinates",
+                      "name": "coords",
+                      "value": "18,18.5,40.3,40.7",
+                      "dtype": "str",
+                      "description": "Region coordinates in the format 'min_lon1,max_lon1,min_lat1,max_lat1 min_lon2,max_lon2,min_lat2,max_lat2 ...'"
+                    },
+                    {
+                      "id": 1,
+                      "gui_name": "Depth",
+                      "name": "depth",
+                      "value": 0.0,
+                      "dtype": "float",
+                      "units": "m",
+                      "description": "Depth value to be assigned within the rectangular area"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "gui_name": "Surface boundary conditions generation",
+      "name": "surface_bc",
+      "description": "Generation of the regridded atmospheric forcings files, used for surface boundary conditions.",
+      "items": [
+        {
+          "id": 0,
+          "gui_name": "Input product",
+          "name": "input_product",
+          "description": "Atmosphere input data product.",
+          "references": [
+          ],
+          "value": "offline",
+          "dtype": "str",
+          "constraints": {
+            "options": [
+              "offline"
+            ]
+          }
+        },
+        {
+          "id": 1,
+          "gui_name": "Offline product settings",
+          "name": "offline",
+          "description": "Custom product settings.",
+          "items": [
+            {
+              "id": 0,
+              "gui_name": "Username",
+              "name": "username",
+              "value": null,
+              "dtype": "str",
+              "description": "Username to access the dataset from a remote ftp server"
+            },
+            {
+              "id": 1,
+              "gui_name": "Password",
+              "name": "password",
+              "value": null,
+              "dtype": "str",
+              "description": "Password to access the dataset from a remote ftp server"
+            },
+            {
+              "id": 2,
+              "gui_name": "Dataset url",
+              "name": "src_url",
+              "value": "file:///media/shared_volumes/Datasets_Experiment_Offline/atmosphere/srcFull",
+              "dtype": "str",
+              "constraints": {
+                "startsWith": [
+                  "file:///",
+                  "ftp:///"
+                ]
+              },
+              "description": "Dataset url (can be a local file or a remote ftp server)."
+            },
+            {
+              "id": 3,
+              "gui_name": "Filenames",
+              "name": "filenames",
+              "items": [
+                {
+                  "id": 0,
+                  "gui_name": "Land-sea mask",
+                  "name": "mask",
+                  "items": [
+                    {
+                      "id": 0,
+                      "gui_name": "Velocity - Zonal component",
+                      "name": "windi",
+                      "value": "<i>-ECMWF---AM0125-MEDATL-b<i+1>_an-fv05.00.nc",
+                      "dtype": "str",
+                      "description": "Parametric name of the windi land-sea mask data (if formulation is mfs_bulk or core)."
+                    },
+                    {
+                      "id": 1,
+                      "gui_name": "Velocity - Meridional component",
+                      "name": "windj",
+                      "value": "<i>-ECMWF---AM0125-MEDATL-b<i+1>_an-fv05.00.nc",
+                      "dtype": "str",
+                      "description": "Parametric name of the windj land-sea mask data (if formulation is mfs_bulk or core)."
+                    },
+                    {
+                      "id": 2,
+                      "gui_name": "Temperature",
+                      "name": "tair",
+                      "value": "<i>-ECMWF---AM0125-MEDATL-b<i+1>_an-fv05.00.nc",
+                      "dtype": "str",
+                      "description": "Parametric name of the tair land-sea mask data (if formulation is mfs_bulk or core)."
+                    },
+                    {
+                      "id": 3,
+                      "gui_name": "Dew point temperature",
+                      "name": "rhm",
+                      "value": "<i>-ECMWF---AM0125-MEDATL-b<i+1>_an-fv05.00.nc",
+                      "dtype": "str",
+                      "description": "Parametric name of the rhm land-sea mask data (if formulation is mfs_bulk)."
+                    },
+                    {
+                      "id": 4,
+                      "gui_name": "Cloud coverage",
+                      "name": "clc",
+                      "value": "<i>-ECMWF---AM0125-MEDATL-b<i+1>_an-fv05.00.nc",
+                      "dtype": "str",
+                      "description": "Parametric name of the clc land-sea mask data (if formulation is mfs_bulk)."
+                    },
+                    {
+                      "id": 5,
+                      "gui_name": "Precipitation",
+                      "name": "precip",
+                      "value": "<i>_<i+1>-ECMWF---AM025-MEDATL-b<i>_fc00-fv02.00_PREC.nc",
+                      "dtype": "str",
+                      "description": "Parametric name of the precip land-sea mask data (if formulation is mfs_bulk or core)."
+                    },
+                    {
+                      "id": 4,
+                      "gui_name": "Mean sea level pressure",
+                      "name": "msl",
+                      "value": "<i>-ECMWF---AM0125-MEDATL-b<i+1>_an-fv05.00.nc",
+                      "dtype": "str",
+                      "description": "Parametric name of the msl land-sea mask data (if formulation is mfs_bulk or sbc_apr_dyn is true)."
+                    }
+                  ]
+                },
+                {
+                  "id": 1,
+                  "gui_name": "Atmosphere",
+                  "name": "atmosphere",
+                  "items": [
+                    {
+                      "id": 0,
+                      "gui_name": "Velocity - zonal component",
+                      "name": "windi",
+                      "value": "<i>-ECMWF---AM0125-MEDATL-b<i+1>_an-fv05.00.nc",
+                      "dtype": "str",
+                      "description": "Parametric name of the windi data (if formulation is mfs_bulk or core)."
+                    },
+                    {
+                      "id": 1,
+                      "gui_name": "Velocity - meridional component",
+                      "name": "windj",
+                      "value": "<i>-ECMWF---AM0125-MEDATL-b<i+1>_an-fv05.00.nc",
+                      "dtype": "str",
+                      "description": "Parametric name of the windj data (if formulation is mfs_bulk or core)."
+                    },
+                    {
+                      "id": 2,
+                      "gui_name": "Temperature",
+                      "name": "tair",
+                      "value": "<i>-ECMWF---AM0125-MEDATL-b<i+1>_an-fv05.00.nc",
+                      "dtype": "str",
+                      "description": "Parametric name of the tair data (if formulation is mfs_bulk or core)."
+                    },
+                    {
+                      "id": 3,
+                      "gui_name": "Dew point temperature",
+                      "name": "rhm",
+                      "value": "<i>-ECMWF---AM0125-MEDATL-b<i+1>_an-fv05.00.nc",
+                      "dtype": "str",
+                      "description": "Parametric name of the rhm data (if formulation is mfs_bulk)."
+                    },
+                    {
+                      "id": 4,
+                      "gui_name": "Cloud coverage",
+                      "name": "clc",
+                      "value": "<i>-ECMWF---AM0125-MEDATL-b<i+1>_an-fv05.00.nc",
+                      "dtype": "str",
+                      "description": "Parametric name of the clc data (if formulation is mfs_bulk)."
+                    },
+                    {
+                      "id": 5,
+                      "gui_name": "Precipitation",
+                      "name": "precip",
+                      "value": "<i>_<i+1>-ECMWF---AM025-MEDATL-b<i>_fc00-fv02.00_PREC.nc",
+                      "dtype": "str",
+                      "description": "Parametric name of the precip data (if formulation is mfs_bulk or core)."
+                    },
+                    {
+                      "id": 6,
+                      "gui_name": "Mean sea level pressure",
+                      "name": "msl",
+                      "value": "<i>-ECMWF---AM0125-MEDATL-b<i+1>_an-fv05.00.nc",
+                      "dtype": "str",
+                      "description": "Parametric name of the msl data  (if formulation is mfs_bulk or sn_apr_dyn is true)."
+                    }
+                  ]
+                },
+                {
+                  "id": 2,
+                  "gui_name": "Dates input format",
+                  "name": "dates_format",
+                  "value": "%Y%m%d",
+                  "dtype": "str",
+                  "description": "Format of the dates in the parametric filenames."
+                },
+                {
+                  "id": 3,
+                  "gui_name": "Regular production day",
+                  "name": "production_weekday",
+                  "value": null,
+                  "dtype": "str",
+                  "description": "Regular production day of the dataset (Monday, Tuesday, ...)."
+                }
+              ]
+            },
+            {
+              "id": 4,
+              "gui_name": "Formulation",
+              "name": "formulation",
+              "value": "mfs_bulk",
+              "dtype": "str",
+              "constraints": {
+                "options": [
+                  "mfs_bulk"
+                ]
+              },
+              "description": "Surface boundary condition parametrization. Choose between msf_bulk, fluxform+ssRest and core parametrizations."
+            },
+            {
+              "id": 5,
+              "gui_name": "Input data fields",
+              "name": "data_fields",
+              "items": [
+                {
+                  "id": 0,
+                  "gui_name": "Land-sea mask",
+                  "name": "mask",
+                  "items": [
+                    {
+                      "id": 0,
+                      "gui_name": "Dimensions",
+                      "name": "dims",
+                      "items": [
+                        {
+                          "id": 0,
+                          "gui_name": "T-points",
+                          "name": "T",
+                          "items": [
+                            {
+                              "id": 0,
+                              "gui_name": "Longitude",
+                              "name": "lon",
+                              "value": "lon",
+                              "dtype": "str",
+                              "description": "Name of the longitude dimension."
+                            },
+                            {
+                              "id": 1,
+                              "gui_name": "Latitude",
+                              "name": "lat",
+                              "value": "lat",
+                              "dtype": "str",
+                              "description": "Name of the latitude dimension."
+                            },
+                            {
+                              "id": 2,
+                              "gui_name": "Time",
+                              "name": "time",
+                              "value": "time",
+                              "dtype": "str",
+                              "description": "Name of the time dimension."
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "id": 1,
+                      "gui_name": "Coordinates",
+                      "name": "coords",
+                      "items": [
+                        {
+                          "id": 0,
+                          "gui_name": "T-points",
+                          "name": "T",
+                          "items": [
+                            {
+                              "id": 0,
+                              "gui_name": "Longitude",
+                              "name": "lon",
+                              "value": "lon",
+                              "dtype": "str",
+                              "description": "Name of the longitude T-points coordinate."
+                            },
+                            {
+                              "id": 1,
+                              "gui_name": "Latitude",
+                              "name": "lat",
+                              "value": "lat",
+                              "dtype": "str",
+                              "description": "Name of the latitude T-points coordinate."
+                            },
+                            {
+                              "id": 2,
+                              "gui_name": "Time",
+                              "name": "time",
+                              "value": "time",
+                              "dtype": "str",
+                              "description": "Name of the time coordinate."
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "id": 2,
+                      "gui_name": "Variables",
+                      "name": "vars",
+                      "items": [
+                        {
+                          "id": 0,
+                          "gui_name": "T-points",
+                          "name": "T",
+                          "items": [
+                            {
+                              "id": 0,
+                              "gui_name": "Land-sea mask",
+                              "name": "mask",
+                              "value": "LSM",
+                              "dtype": "str",
+                              "description": "Name of the land-sea mask T-points variable."
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "id": 1,
+                  "gui_name": "Atmosphere",
+                  "name": "atmosphere",
+                  "items": [
+                    {
+                      "id": 0,
+                      "gui_name": "Dimensions",
+                      "name": "dims",
+                      "items": [
+                        {
+                          "id": 0,
+                          "gui_name": "T-points",
+                          "name": "T",
+                          "items": [
+                            {
+                              "id": 0,
+                              "gui_name": "Longitude",
+                              "name": "lon",
+                              "value": "lon",
+                              "dtype": "str",
+                              "description": "Name of the longitude dimension."
+                            },
+                            {
+                              "id": 1,
+                              "gui_name": "Latitude",
+                              "name": "lat",
+                              "value": "lat",
+                              "dtype": "str",
+                              "description": "Name of the latitude dimension."
+                            },
+                            {
+                              "id": 2,
+                              "gui_name": "Time",
+                              "name": "time",
+                              "value": "time",
+                              "dtype": "str",
+                              "description": "Name of the time dimension."
+                            }
+                          ]
+                        },
+                        {
+                          "id": 1,
+                          "gui_name": "U-points",
+                          "name": "U",
+                          "items": [
+                            {
+                              "id": 0,
+                              "gui_name": "Longitude",
+                              "name": "lon",
+                              "value": "lon",
+                              "dtype": "str",
+                              "description": "Name of the longitude dimension."
+                            },
+                            {
+                              "id": 1,
+                              "gui_name": "Latitude",
+                              "name": "lat",
+                              "value": "lat",
+                              "dtype": "str",
+                              "description": "Name of the latitude dimension."
+                            },
+                            {
+                              "id": 2,
+                              "gui_name": "Time",
+                              "name": "time",
+                              "value": "time",
+                              "dtype": "str",
+                              "description": "Name of the time dimension."
+                            }
+                          ]
+                        },
+                        {
+                          "id": 2,
+                          "gui_name": "V-points",
+                          "name": "V",
+                          "items": [
+                            {
+                              "id": 0,
+                              "gui_name": "Longitude",
+                              "name": "lon",
+                              "value": "lon",
+                              "dtype": "str",
+                              "description": "Name of the longitude dimension."
+                            },
+                            {
+                              "id": 1,
+                              "gui_name": "Latitude",
+                              "name": "lat",
+                              "value": "lat",
+                              "dtype": "str",
+                              "description": "Name of the latitude dimension."
+                            },
+                            {
+                              "id": 2,
+                              "gui_name": "Time",
+                              "name": "time",
+                              "value": "time",
+                              "dtype": "str",
+                              "description": "Name of the time dimension."
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "id": 1,
+                      "gui_name": "Coordinates",
+                      "name": "coords",
+                      "items": [
+                        {
+                          "id": 0,
+                          "gui_name": "T-points",
+                          "name": "T",
+                          "items": [
+                            {
+                              "id": 0,
+                              "gui_name": "Longitude",
+                              "name": "lon",
+                              "value": "lon",
+                              "dtype": "str",
+                              "description": "Name of the longitude T-points coordinate."
+                            },
+                            {
+                              "id": 1,
+                              "gui_name": "Latitude",
+                              "name": "lat",
+                              "value": "lat",
+                              "dtype": "str",
+                              "description": "Name of the latitude T-points coordinate."
+                            },
+                            {
+                              "id": 2,
+                              "gui_name": "Time",
+                              "name": "time",
+                              "value": "time",
+                              "dtype": "str",
+                              "description": "Name of the time coordinate."
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "id": 2,
+                      "gui_name": "Variables",
+                      "name": "vars",
+                      "items": [
+                        {
+                          "id": 0,
+                          "gui_name": "Wind zonal",
+                          "name": "windi",
+                          "value": "U10M",
+                          "dtype": "str",
+                          "description": "Zonal Component of the 10m wind at points T in m/s (if formulation is mfs_bulk or core)"
+                        },
+                        {
+                          "id": 1,
+                          "gui_name": "Wind meridional",
+                          "name": "windj",
+                          "value": "V10M",
+                          "dtype": "str",
+                          "description": "Meridional Component of the 10m wind at points T in m/s (if formulation is mfs_bulk or core)"
+                        },
+                        {
+                          "id": 2,
+                          "gui_name": "Cloud cover",
+                          "name": "clc",
+                          "value": "TCC",
+                          "dtype": "str",
+                          "description": "Total cloud cover at points T in % (if formulation is mfs_bulk)"
+                        },
+                        {
+                          "id": 3,
+                          "gui_name": "Air temperature",
+                          "name": "tair",
+                          "value": "T2M",
+                          "dtype": "str",
+                          "description": "2m Air Temperature at points T in K (if formulation is mfs_bulk or core)"
+                        },
+                        {
+                          "id": 4,
+                          "gui_name": "Dew point temperature",
+                          "name": "rhm",
+                          "value": "D2M",
+                          "dtype": "str",
+                          "description": "2m Dew Point Temperature at points T in K (if formulation is mfs_bulk)"
+                        },
+                        {
+                          "id": 5,
+                          "gui_name": "Total Precipitation",
+                          "name": "precip",
+                          "value": "PREC",
+                          "dtype": "str",
+                          "description": "Total Precipitation at points T in kg/m^2/s (if formulation is mfs_bulk or core)"
+                        },
+                        {
+                          "id": 6,
+                          "gui_name": "Mean sea-level pressure",
+                          "name": "msl",
+                          "value": "MSL",
+                          "dtype": "str",
+                          "description": "Mean sea-level pressure at points T in Pa (if formulation is mfs_bulk or sbc_apr_dyn is true)"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": 2,
+          "gui_name": "Subset",
+          "name": "subset",
+          "items": [
+            {
+              "id": 0,
+              "gui_name": "Buffer size",
+              "name": "buffer_size",
+              "value": 4,
+              "dtype": "int",
+              "description": "Number of pixels to add around the subset."
+            }
+          ]
+        },
+        {
+          "id": 4,
+          "gui_name": "Interpolation",
+          "name": "interpolate",
+          "items": [
+            {
+              "id": 0,
+              "gui_name": "Method",
+              "name": "method",
+              "value": "bicub",
+              "dtype": "str",
+              "constraints": {
+                "options": [
+                  "bilin",
+                  "bicub",
+                  "distwgt"
+                ]
+              },
+              "description": "Interpolation method used to map the input data on the downscaled grid"
+            }
+          ]
+        },
+        {
+          "id": 5,
+          "gui_name": "Time interpolation",
+          "name": "interpolate_time",
+          "value": true,
+          "dtype": "bool",
+          "description": "Time interpolation. Choose between step-like shape forcing (false) and broken-line shape forcing (true)."
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "gui_name": "Initial conditions generation",
+      "name": "ocean_ic",
+      "description": "Generation of the regridded ocean files for the initial conditions.",
+      "items": [
+        {
+          "id": 0,
+          "gui_name": "Input product",
+          "name": "input_product",
+          "description": "Ocean data input product used for the initial condition generation.",
+          "references": [
+            "https://data.marine.copernicus.eu/product/GLOBAL_MULTIYEAR_PHY_001_030/description",
+            "https://data.marine.copernicus.eu/product/GLOBAL_ANALYSISFORECAST_PHY_001_024/description"
+          ],
+          "value": "offline",
+          "dtype": "str",
+          "constraints": {
+            "options": [
+              "offline"
+            ]
+          }
+        },
+        {
+          "id": 1,
+          "gui_name": "Offline product settings",
+          "name": "offline",
+          "items": [
+            {
+              "id": 0,
+              "gui_name": "Username",
+              "name": "username",
+              "value": null,
+              "dtype": "str",
+              "description": "Username to access the dataset from a remote ftp server"
+            },
+            {
+              "id": 1,
+              "gui_name": "Password",
+              "name": "password",
+              "value": null,
+              "dtype": "str",
+              "description": "Password to access the dataset from a remote ftp server"
+            },
+            {
+              "id": 2,
+              "gui_name": "URL",
+              "name": "url",
+              "value": "file:///media/shared_volumes/Datasets_Experiment_Offline/ocean/srcFull",
+              "dtype": "str",
+              "constraints": {
+                "startsWith": [
+                  "file:///",
+                  "ftp:///"
+                ]
+              },
+              "description": "Dataset url (can be a local file or a remote ftp server)."
+            },
+            {
+              "id": 3,
+              "gui_name": "Grid type",
+              "name": "grid_type",
+              "items": [
+                {
+                  "id": 0,
+                  "gui_name": "Staggered",
+                  "name": "staggered",
+                  "value": true,
+                  "dtype": "bool",
+                  "description": "Staggered or unstaggered grid?"
+                },
+                {
+                  "id": 1,
+                  "gui_name": "Regular",
+                  "name": "regular",
+                  "value": true,
+                  "dtype": "bool",
+                  "description": "Regular spherical or irregular non-spherical grid?"
+                }
+              ]
+            },
+            {
+              "id": 4,
+              "gui_name": "Filename",
+              "name": "filenames",
+              "items": [
+                {
+                  "id": 0,
+                  "gui_name": "Land-sea mask",
+                  "name": "mask",
+                  "items": [
+                    {
+                      "id": 0,
+                      "gui_name": "Temperature",
+                      "name": "temp",
+                      "value": "meshmask_SYS4a3_IONIAN.nc",
+                      "dtype": "str",
+                      "description": "Name of the temp land-sea mask data."
+                    },
+                    {
+                      "id": 1,
+                      "gui_name": "Salinity",
+                      "name": "sal",
+                      "value": "meshmask_SYS4a3_IONIAN.nc",
+                      "dtype": "str",
+                      "description": "Name of the salinity land-sea mask data."
+                    },
+                    {
+                      "id": 2,
+                      "gui_name": "Sea surface height",
+                      "name": "ssh",
+                      "value": "meshmask_SYS4a3_IONIAN.nc",
+                      "dtype": "str",
+                      "description": "Name of the sea surface height land-sea mask data."
+                    },
+                    {
+                      "id": 3,
+                      "gui_name": "Velocity - Zonal component",
+                      "name": "velu",
+                      "value": "meshmask_SYS4a3_IONIAN.nc",
+                      "dtype": "str",
+                      "description": "Name of the zonal velocity land-sea mask data."
+                    },
+                    {
+                      "id": 4,
+                      "gui_name": "Velocity - Meridional component",
+                      "name": "velv",
+                      "value": "meshmask_SYS4a3_IONIAN.nc",
+                      "dtype": "str",
+                      "description": "Name of the meridional velocity land-sea mask data."
+                    }
+                  ]
+                },
+                {
+                  "id": 1,
+                  "gui_name": "Ocean",
+                  "name": "ocean",
+                  "items": [
+                    {
+                      "id": 0,
+                      "gui_name": "Temperature",
+                      "name": "temp",
+                      "value": "EXP1_EAS1_1d_<i-1>_<i>_grid_T_IONIAN.nc",
+                      "dtype": "str",
+                      "description": "Parametric name of the temp land-sea mask data."
+                    },
+                    {
+                      "id": 1,
+                      "gui_name": "Salinity",
+                      "name": "sal",
+                      "value": "EXP1_EAS1_1d_<i-1>_<i>_grid_T_IONIAN.nc",
+                      "dtype": "str",
+                      "description": "Parametric name of the salinity land-sea mask data."
+                    },
+                    {
+                      "id": 2,
+                      "gui_name": "Sea surface height",
+                      "name": "ssh",
+                      "value": "EXP1_EAS1_1d_<i-1>_<i>_grid_T_IONIAN.nc",
+                      "dtype": "str",
+                      "description": "Parametric name of the sea surface height data."
+                    },
+                    {
+                      "id": 3,
+                      "gui_name": "Velocity - Zonal component",
+                      "name": "velu",
+                      "value": "EXP1_EAS1_1d_<i-1>_<i>_grid_U_IONIAN.nc",
+                      "dtype": "str",
+                      "description": "Parametric name of the zonal velocity data."
+                    },
+                    {
+                      "id": 4,
+                      "gui_name": "Velocity - Meridional component",
+                      "name": "velv",
+                      "value": "EXP1_EAS1_1d_<i-1>_<i>_grid_V_IONIAN.nc",
+                      "dtype": "str",
+                      "description": "Parametric name of the meridional velocity data."
+                    }
+                  ]
+                },
+                {
+                  "id": 2,
+                  "gui_name": "Dates input format",
+                  "name": "dates_format",
+                  "value": "%Y%m%d",
+                  "dtype": "str",
+                  "description": "Format of the dates in the parametric filenames."
+                },
+                {
+                  "id": 3,
+                  "gui_name": "Regular production day",
+                  "name": "production_weekday",
+                  "value": null,
+                  "dtype": "str",
+                  "description": "Regular production day of the dataset (Monday, Tuesday, ...)."
+                }
+              ]
+            },
+            {
+              "id": 5,
+              "gui_name": "Data fields",
+              "name": "data_fields",
+              "items": [
+                {
+                  "id": 0,
+                  "gui_name": "Land-sea mask",
+                  "name": "mask",
+                  "items": [
+                    {
+                      "id": 0,
+                      "gui_name": "Dimensions",
+                      "name": "dims",
+                      "items": [
+                        {
+                          "id": 0,
+                          "gui_name": "T-points",
+                          "name": "T",
+                          "items": [
+                            {
+                              "id": 0,
+                              "gui_name": "Longitude",
+                              "name": "lon",
+                              "value": "x",
+                              "dtype": "str",
+                              "description": "Name of the longitude dimension."
+                            },
+                            {
+                              "id": 1,
+                              "gui_name": "Latitude",
+                              "name": "lat",
+                              "value": "y",
+                              "dtype": "str",
+                              "description": "Name of the latitude dimension."
+                            },
+                            {
+                              "id": 2,
+                              "gui_name": "Depth",
+                              "name": "depth",
+                              "value": "z",
+                              "dtype": "str",
+                              "description": "Name of the depth dimension."
+                            },
+                            {
+                              "id": 3,
+                              "gui_name": "Time",
+                              "name": "time",
+                              "value": "t",
+                              "dtype": "str",
+                              "description": "Name of the time dimension."
+                            }
+                          ]
+                        },
+                        {
+                          "id": 1,
+                          "gui_name": "U-points",
+                          "name": "U",
+                          "items": [
+                            {
+                              "id": 0,
+                              "gui_name": "Longitude",
+                              "name": "lon",
+                              "value": "x",
+                              "dtype": "str",
+                              "description": "Name of the longitude dimension."
+                            },
+                            {
+                              "id": 1,
+                              "gui_name": "Latitude",
+                              "name": "lat",
+                              "value": "y",
+                              "dtype": "str",
+                              "description": "Name of the latitude dimension."
+                            },
+                            {
+                              "id": 2,
+                              "gui_name": "Depth",
+                              "name": "depth",
+                              "value": "z",
+                              "dtype": "str",
+                              "description": "Name of the depth dimension."
+                            },
+                            {
+                              "id": 3,
+                              "gui_name": "Time",
+                              "name": "time",
+                              "value": "t",
+                              "dtype": "str",
+                              "description": "Name of the time dimension."
+                            }
+                          ]
+                        },
+                        {
+                          "id": 2,
+                          "gui_name": "V-points",
+                          "name": "V",
+                          "items": [
+                            {
+                              "id": 0,
+                              "gui_name": "Longitude",
+                              "name": "lon",
+                              "value": "x",
+                              "dtype": "str",
+                              "description": "Name of the longitude dimension."
+                            },
+                            {
+                              "id": 1,
+                              "gui_name": "Latitude",
+                              "name": "lat",
+                              "value": "y",
+                              "dtype": "str",
+                              "description": "Name of the latitude dimension."
+                            },
+                            {
+                              "id": 2,
+                              "gui_name": "Depth",
+                              "name": "depth",
+                              "value": "z",
+                              "dtype": "str",
+                              "description": "Name of the depth dimension."
+                            },
+                            {
+                              "id": 3,
+                              "gui_name": "Time",
+                              "name": "time",
+                              "value": "t",
+                              "dtype": "str",
+                              "description": "Name of the time dimension."
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "id": 1,
+                      "gui_name": "Coordinates",
+                      "name": "coords",
+                      "items": [
+                        {
+                          "id": 0,
+                          "gui_name": "T-points",
+                          "name": "T",
+                          "items": [
+                            {
+                              "id": 0,
+                              "gui_name": "Longitude",
+                              "name": "lon",
+                              "value": "glamt",
+                              "dtype": "str",
+                              "description": "Name of the longitude coordinate."
+                            },
+                            {
+                              "id": 1,
+                              "gui_name": "Latitude",
+                              "name": "lat",
+                              "value": "gphit",
+                              "dtype": "str",
+                              "description": "Name of the latitude coordinate."
+                            },
+                            {
+                              "id": 2,
+                              "gui_name": "Depth",
+                              "name": "depth",
+                              "value": "nav_lev",
+                              "dtype": "str",
+                              "description": "Name of the depth coordinate."
+                            },
+                            {
+                              "id": 3,
+                              "gui_name": "Time",
+                              "name": "time",
+                              "value": "time_counter",
+                              "dtype": "str",
+                              "description": "Name of the time coordinate."
+                            }
+                          ]
+                        },
+                        {
+                          "id": 1,
+                          "gui_name": "U-points",
+                          "name": "U",
+                          "items": [
+                            {
+                              "id": 0,
+                              "gui_name": "Longitude",
+                              "name": "lon",
+                              "value": "glamu",
+                              "dtype": "str",
+                              "description": "Name of the longitude coordinate."
+                            },
+                            {
+                              "id": 1,
+                              "gui_name": "Latitude",
+                              "name": "lat",
+                              "value": "gphiu",
+                              "dtype": "str",
+                              "description": "Name of the latitude coordinate."
+                            },
+                            {
+                              "id": 2,
+                              "gui_name": "Depth",
+                              "name": "depth",
+                              "value": "nav_lev",
+                              "dtype": "str",
+                              "description": "Name of the depth coordinate."
+                            },
+                            {
+                              "id": 3,
+                              "gui_name": "Time",
+                              "name": "time",
+                              "value": "time_counter",
+                              "dtype": "str",
+                              "description": "Name of the time coordinate."
+                            }
+                          ]
+                        },
+                        {
+                          "id": 2,
+                          "gui_name": "V-points",
+                          "name": "V",
+                          "items": [
+                            {
+                              "id": 0,
+                              "gui_name": "Longitude",
+                              "name": "lon",
+                              "value": "glamv",
+                              "dtype": "str",
+                              "description": "Name of the longitude coordinate."
+                            },
+                            {
+                              "id": 1,
+                              "gui_name": "Latitude",
+                              "name": "lat",
+                              "value": "gphiv",
+                              "dtype": "str",
+                              "description": "Name of the latitude coordinate."
+                            },
+                            {
+                              "id": 2,
+                              "gui_name": "Depth",
+                              "name": "depth",
+                              "value": "nav_lev",
+                              "dtype": "str",
+                              "description": "Name of the depth coordinate."
+                            },
+                            {
+                              "id": 3,
+                              "gui_name": "Time",
+                              "name": "time",
+                              "value": "time_counter",
+                              "dtype": "str",
+                              "description": "Name of the time coordinate."
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "id": 2,
+                      "gui_name": "Variables",
+                      "name": "vars",
+                      "items": [
+                        {
+                          "id": 0,
+                          "gui_name": "T-points",
+                          "name": "T",
+                          "items": [
+                            {
+                              "id": 0,
+                              "gui_name": "Land-sea mask",
+                              "name": "mask",
+                              "value": "tmask",
+                              "dtype": "str",
+                              "description": "Name of the land-sea mask variable."
+                            },
+                            {
+                              "id": 1,
+                              "gui_name": "Scale factors longitude",
+                              "name": "scale_lon",
+                              "value": "e1t",
+                              "dtype": "str",
+                              "description": "Name of the scale factors longitude variable."
+                            },
+                            {
+                              "id": 2,
+                              "gui_name": "Scale factors latitude",
+                              "name": "scale_lat",
+                              "value": "e2t",
+                              "dtype": "str",
+                              "description": "Name of the scale factors latitude variable."
+                            },
+                            {
+                              "id": 3,
+                              "gui_name": "Scale factors depth",
+                              "name": "scale_depth",
+                              "value": "e3t",
+                              "dtype": "str",
+                              "description": "Name of the scale factors depth variable."
+                            }
+                          ]
+                        },
+                        {
+                          "id": 1,
+                          "gui_name": "U-points",
+                          "name": "U",
+                          "items": [
+                            {
+                              "id": 0,
+                              "gui_name": "Land-sea mask",
+                              "name": "mask",
+                              "value": "umask",
+                              "dtype": "str",
+                              "description": "Name of the land-sea mask variable."
+                            },
+                            {
+                              "id": 1,
+                              "gui_name": "Scale factors longitude",
+                              "name": "scale_lon",
+                              "value": "e1u",
+                              "dtype": "str",
+                              "description": "Name of the scale factors longitude variable."
+                            },
+                            {
+                              "id": 2,
+                              "gui_name": "Scale factors latitude",
+                              "name": "scale_lat",
+                              "value": "e2u",
+                              "dtype": "str",
+                              "description": "Name of the scale factors latitude variable."
+                            },
+                            {
+                              "id": 3,
+                              "gui_name": "Scale factors depth",
+                              "name": "scale_depth",
+                              "value": "e3u",
+                              "dtype": "str",
+                              "description": "Name of the scale factors depth variable."
+                            }
+                          ]
+                        },
+                        {
+                          "id": 2,
+                          "gui_name": "V-points",
+                          "name": "V",
+                          "items": [
+                            {
+                              "id": 0,
+                              "gui_name": "Land-sea mask",
+                              "name": "mask",
+                              "value": "vmask",
+                              "dtype": "str",
+                              "description": "Name of the land-sea mask variable."
+                            },
+                            {
+                              "id": 1,
+                              "gui_name": "Scale factors longitude",
+                              "name": "scale_lon",
+                              "value": "e1v",
+                              "dtype": "str",
+                              "description": "Name of the scale factors longitude variable."
+                            },
+                            {
+                              "id": 2,
+                              "gui_name": "Scale factors latitude",
+                              "name": "scale_lat",
+                              "value": "e2v",
+                              "dtype": "str",
+                              "description": "Name of the scale factors latitude variable."
+                            },
+                            {
+                              "id": 3,
+                              "gui_name": "Scale factors depth",
+                              "name": "scale_depth",
+                              "value": "e3v",
+                              "dtype": "str",
+                              "description": "Name of the scale factors depth variable."
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "id": 1,
+                  "gui_name": "Ocean",
+                  "name": "ocean",
+                  "items": [
+                    {
+                      "id": 0,
+                      "gui_name": "Dimensions",
+                      "name": "dims",
+                      "items": [
+                        {
+                          "id": 0,
+                          "gui_name": "T-points",
+                          "name": "T",
+                          "items": [
+                            {
+                              "id": 0,
+                              "gui_name": "Longitude",
+                              "name": "lon",
+                              "value": "x",
+                              "dtype": "str",
+                              "description": "Name of the longitude dimension."
+                            },
+                            {
+                              "id": 1,
+                              "gui_name": "Latitude",
+                              "name": "lat",
+                              "value": "y",
+                              "dtype": "str",
+                              "description": "Name of the latitude dimension."
+                            },
+                            {
+                              "id": 2,
+                              "gui_name": "Depth",
+                              "name": "depth",
+                              "value": "deptht",
+                              "dtype": "str",
+                              "description": "Name of the depth dimension."
+                            },
+                            {
+                              "id": 3,
+                              "gui_name": "Time",
+                              "name": "time",
+                              "value": "time_counter",
+                              "dtype": "str",
+                              "description": "Name of the time dimension."
+                            }
+                          ]
+                        },
+                        {
+                          "id": 1,
+                          "gui_name": "U-points",
+                          "name": "U",
+                          "items": [
+                            {
+                              "id": 0,
+                              "gui_name": "Longitude",
+                              "name": "lon",
+                              "value": "x",
+                              "dtype": "str",
+                              "description": "Name of the longitude dimension."
+                            },
+                            {
+                              "id": 1,
+                              "gui_name": "Latitude",
+                              "name": "lat",
+                              "value": "y",
+                              "dtype": "str",
+                              "description": "Name of the latitude dimension."
+                            },
+                            {
+                              "id": 2,
+                              "gui_name": "Depth",
+                              "name": "depth",
+                              "value": "depthu",
+                              "dtype": "str",
+                              "description": "Name of the depth dimension."
+                            },
+                            {
+                              "id": 3,
+                              "gui_name": "Time",
+                              "name": "time",
+                              "value": "time_counter",
+                              "dtype": "str",
+                              "description": "Name of the time dimension."
+                            }
+                          ]
+                        },
+                        {
+                          "id": 2,
+                          "gui_name": "V-points",
+                          "name": "V",
+                          "items": [
+                            {
+                              "id": 0,
+                              "gui_name": "Longitude",
+                              "name": "lon",
+                              "value": "x",
+                              "dtype": "str",
+                              "description": "Name of the longitude dimension."
+                            },
+                            {
+                              "id": 1,
+                              "gui_name": "Latitude",
+                              "name": "lat",
+                              "value": "y",
+                              "dtype": "str",
+                              "description": "Name of the latitude dimension."
+                            },
+                            {
+                              "id": 2,
+                              "gui_name": "Depth",
+                              "name": "depth",
+                              "value": "depthv",
+                              "dtype": "str",
+                              "description": "Name of the depth dimension."
+                            },
+                            {
+                              "id": 3,
+                              "gui_name": "Time",
+                              "name": "time",
+                              "value": "time_counter",
+                              "dtype": "str",
+                              "description": "Name of the time dimension."
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "id": 1,
+                      "gui_name": "Coordinates",
+                      "name": "coords",
+                      "items": [
+                        {
+                          "id": 0,
+                          "gui_name": "T-points",
+                          "name": "T",
+                          "items": [
+                            {
+                              "id": 0,
+                              "gui_name": "Longitude",
+                              "name": "lon",
+                              "value": "nav_lon",
+                              "dtype": "str",
+                              "description": "Name of the longitude coordinate."
+                            },
+                            {
+                              "id": 1,
+                              "gui_name": "Latitude",
+                              "name": "lat",
+                              "value": "nav_lat",
+                              "dtype": "str",
+                              "description": "Name of the latitude coordinate."
+                            },
+                            {
+                              "id": 2,
+                              "gui_name": "Depth",
+                              "name": "depth",
+                              "value": "deptht",
+                              "dtype": "str",
+                              "description": "Name of the depth coordinate."
+                            },
+                            {
+                              "id": 3,
+                              "gui_name": "Time",
+                              "name": "time",
+                              "value": "time_counter",
+                              "dtype": "str",
+                              "description": "Name of the time coordinate."
+                            }
+                          ]
+                        },
+                        {
+                          "id": 1,
+                          "gui_name": "U-points",
+                          "name": "U",
+                          "items": [
+                            {
+                              "id": 0,
+                              "gui_name": "Longitude",
+                              "name": "lon",
+                              "value": "nav_lon",
+                              "dtype": "str",
+                              "description": "Name of the longitude coordinate."
+                            },
+                            {
+                              "id": 1,
+                              "gui_name": "Latitude",
+                              "name": "lat",
+                              "value": "nav_lat",
+                              "dtype": "str",
+                              "description": "Name of the latitude coordinate."
+                            },
+                            {
+                              "id": 2,
+                              "gui_name": "Depth",
+                              "name": "depth",
+                              "value": "depthu",
+                              "dtype": "str",
+                              "description": "Name of the depth coordinate."
+                            },
+                            {
+                              "id": 3,
+                              "gui_name": "Time",
+                              "name": "time",
+                              "value": "time_counter",
+                              "dtype": "str",
+                              "description": "Name of the time coordinate."
+                            }
+                          ]
+                        },
+                        {
+                          "id": 2,
+                          "gui_name": "V-points",
+                          "name": "V",
+                          "items": [
+                            {
+                              "id": 0,
+                              "gui_name": "Longitude",
+                              "name": "lon",
+                              "value": "nav_lon",
+                              "dtype": "str",
+                              "description": "Name of the longitude coordinate."
+                            },
+                            {
+                              "id": 1,
+                              "gui_name": "Latitude",
+                              "name": "lat",
+                              "value": "nav_lat",
+                              "dtype": "str",
+                              "description": "Name of the latitude coordinate."
+                            },
+                            {
+                              "id": 2,
+                              "gui_name": "Depth",
+                              "name": "depth",
+                              "value": "depthv",
+                              "dtype": "str",
+                              "description": "Name of the depth coordinate."
+                            },
+                            {
+                              "id": 3,
+                              "gui_name": "Time",
+                              "name": "time",
+                              "value": "time_counter",
+                              "dtype": "str",
+                              "description": "Name of the time coordinate."
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "id": 2,
+                      "gui_name": "Variables",
+                      "name": "vars",
+                      "items": [
+                        {
+                          "id": 0,
+                          "gui_name": "Temperature",
+                          "name": "temp",
+                          "value": "votemper",
+                          "dtype": "str",
+                          "description": "Temperature at points T in degC."
+                        },
+                        {
+                          "id": 1,
+                          "gui_name": "Salinity",
+                          "name": "sal",
+                          "value": "vosaline",
+                          "dtype": "str",
+                          "description": "Salinity at points T in psu."
+                        },
+                        {
+                          "id": 2,
+                          "gui_name": "Sea surface height",
+                          "name": "ssh",
+                          "value": "sossheig",
+                          "dtype": "str",
+                          "description": "Sea Surface Height at points T in m."
+                        },
+                        {
+                          "id": 3,
+                          "gui_name": "Velocity - Zonal component",
+                          "name": "velu",
+                          "value": "vozocrtx",
+                          "dtype": "str",
+                          "description": "Zonal Velocity at points U (if grid_type is staggered) or T (if grid_type is unstaggered) in m/s."
+                        },
+                        {
+                          "id": 4,
+                          "gui_name": "Velocity - Meridional component",
+                          "name": "velv",
+                          "value": "vomecrty",
+                          "dtype": "str",
+                          "description": "Meridional Velocity at points V (if grid_type is staggered) or T (if grid_type is unstaggered) in m/s."
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": 2,
+          "gui_name": "Interpolation",
+          "name": "interpolate",
+          "items": [
+            {
+              "id": 0,
+              "gui_name": "Method",
+              "name": "method",
+              "value": "bilin",
+              "dtype": "str",
+              "constraints": {
+                "options": [
+                  "bilin",
+                  "bicub",
+                  "distwgt"
+                ]
+              },
+              "description": "interpolate method used to map the input data on the downscaled grid"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "gui_name": "Lateral boundary conditions generation",
+      "name": "lateral_bc",
+      "description": "Generation of the regridded ocean files for the lateral boundary conditions.",
+      "items": [
+        {
+          "id": 0,
+          "gui_name": "Input product",
+          "name": "input_product",
+          "description": "Ocean data input product used for the initial condition generation.",
+          "references": [
+            "https://data.marine.copernicus.eu/product/GLOBAL_MULTIYEAR_PHY_001_030/description",
+            "https://data.marine.copernicus.eu/product/GLOBAL_ANALYSISFORECAST_PHY_001_024/description"
+          ],
+          "value": "from_ocean_ic",
+          "dtype": "str",
+          "constraints": {
+            "options": [
+              "offline",
+              "from_ocean_ic"
+            ]
+          }
+        },
+        {
+          "id": 1,
+          "gui_name": "Offline product settings",
+          "name": "offline",
+          "items": [
+            {
+              "id": 0,
+              "gui_name": "Username",
+              "name": "username",
+              "value": null,
+              "dtype": "str",
+              "description": "Username to access the dataset from a remote ftp server"
+            },
+            {
+              "id": 1,
+              "gui_name": "Password",
+              "name": "password",
+              "value": null,
+              "dtype": "str",
+              "description": "Password to access the dataset from a remote ftp server"
+            },
+            {
+              "id": 2,
+              "gui_name": "URL",
+              "name": "url",
+              "value": null,
+              "dtype": "str",
+              "constraints": {
+                "startsWith": [
+                  "file:///",
+                  "ftp:///"
+                ]
+              },
+              "description": "Dataset url (can be a local file or a remote ftp server)."
+            },
+            {
+              "id": 3,
+              "gui_name": "Grid type",
+              "name": "grid_type",
+              "items": [
+                {
+                  "id": 0,
+                  "gui_name": "Staggered",
+                  "name": "staggered",
+                  "value": null,
+                  "dtype": "bool",
+                  "description": "Staggered or unstaggered grid?"
+                },
+                {
+                  "id": 1,
+                  "gui_name": "Regular",
+                  "name": "regular",
+                  "value": null,
+                  "dtype": "bool",
+                  "description": "Regular spherical or irregular non-spherical grid?"
+                }
+              ]
+            },
+            {
+              "id": 4,
+              "gui_name": "Filename",
+              "name": "filenames",
+              "items": [
+                {
+                  "id": 0,
+                  "gui_name": "Land-sea mask",
+                  "name": "mask",
+                  "items": [
+                    {
+                      "id": 0,
+                      "gui_name": "Temperature",
+                      "name": "temp",
+                      "value": null,
+                      "dtype": "str",
+                      "description": "Name of the temp land-sea mask data."
+                    },
+                    {
+                      "id": 1,
+                      "gui_name": "Salinity",
+                      "name": "sal",
+                      "value": null,
+                      "dtype": "str",
+                      "description": "Name of the salinity land-sea mask data."
+                    },
+                    {
+                      "id": 2,
+                      "gui_name": "Sea surface height",
+                      "name": "ssh",
+                      "value": null,
+                      "dtype": "str",
+                      "description": "Name of the sea surface height land-sea mask data."
+                    },
+                    {
+                      "id": 3,
+                      "gui_name": "Velocity - Zonal component",
+                      "name": "velu",
+                      "value": null,
+                      "dtype": "str",
+                      "description": "Name of the zonal velocity land-sea mask data."
+                    },
+                    {
+                      "id": 4,
+                      "gui_name": "Velocity - Meridional component",
+                      "name": "velv",
+                      "value": null,
+                      "dtype": "str",
+                      "description": "Name of the meridional velocity land-sea mask data."
+                    }
+                  ]
+                },
+                {
+                  "id": 1,
+                  "gui_name": "Ocean",
+                  "name": "ocean",
+                  "items": [
+                    {
+                      "id": 0,
+                      "gui_name": "Temperature",
+                      "name": "temp",
+                      "value": null,
+                      "dtype": "str",
+                      "description": "Parametric name of the temp land-sea mask data."
+                    },
+                    {
+                      "id": 1,
+                      "gui_name": "Salinity",
+                      "name": "sal",
+                      "value": null,
+                      "dtype": "str",
+                      "description": "Parametric name of the salinity land-sea mask data."
+                    },
+                    {
+                      "id": 2,
+                      "gui_name": "Sea surface height",
+                      "name": "ssh",
+                      "value": null,
+                      "dtype": "str",
+                      "description": "Parametric name of the sea surface height data."
+                    },
+                    {
+                      "id": 3,
+                      "gui_name": "Velocity - Zonal component",
+                      "name": "velu",
+                      "value": null,
+                      "dtype": "str",
+                      "description": "Parametric name of the zonal velocity data."
+                    },
+                    {
+                      "id": 4,
+                      "gui_name": "Velocity - Meridional component",
+                      "name": "velv",
+                      "value": null,
+                      "dtype": "str",
+                      "description": "Parametric name of the meridional velocity data."
+                    }
+                  ]
+                },
+                {
+                  "id": 2,
+                  "gui_name": "Dates input format",
+                  "name": "dates_format",
+                  "value": null,
+                  "dtype": "str",
+                  "description": "Format of the dates in the parametric filenames."
+                },
+                {
+                  "id": 3,
+                  "gui_name": "Regular production day",
+                  "name": "production_weekday",
+                  "value": null,
+                  "dtype": "str",
+                  "description": "Regular production day of the dataset (Monday, Tuesday, ...)."
+                }
+              ]
+            },
+            {
+              "id": 5,
+              "gui_name": "Data fields",
+              "name": "data_fields",
+              "items": [
+                {
+                  "id": 0,
+                  "gui_name": "Land-sea mask",
+                  "name": "mask",
+                  "items": [
+                    {
+                      "id": 0,
+                      "gui_name": "Dimensions",
+                      "name": "dims",
+                      "items": [
+                        {
+                          "id": 0,
+                          "gui_name": "T-points",
+                          "name": "T",
+                          "items": [
+                            {
+                              "id": 0,
+                              "gui_name": "Longitude",
+                              "name": "lon",
+                              "value": null,
+                              "dtype": "str",
+                              "description": "Name of the longitude dimension."
+                            },
+                            {
+                              "id": 1,
+                              "gui_name": "Latitude",
+                              "name": "lat",
+                              "value": null,
+                              "dtype": "str",
+                              "description": "Name of the latitude dimension."
+                            },
+                            {
+                              "id": 2,
+                              "gui_name": "Depth",
+                              "name": "depth",
+                              "value": null,
+                              "dtype": "str",
+                              "description": "Name of the depth dimension."
+                            },
+                            {
+                              "id": 3,
+                              "gui_name": "Time",
+                              "name": "time",
+                              "value": null,
+                              "dtype": "str",
+                              "description": "Name of the time dimension."
+                            }
+                          ]
+                        },
+                        {
+                          "id": 1,
+                          "gui_name": "U-points",
+                          "name": "U",
+                          "items": [
+                            {
+                              "id": 0,
+                              "gui_name": "Longitude",
+                              "name": "lon",
+                              "value": null,
+                              "dtype": "str",
+                              "description": "Name of the longitude dimension."
+                            },
+                            {
+                              "id": 1,
+                              "gui_name": "Latitude",
+                              "name": "lat",
+                              "value": null,
+                              "dtype": "str",
+                              "description": "Name of the latitude dimension."
+                            },
+                            {
+                              "id": 2,
+                              "gui_name": "Depth",
+                              "name": "depth",
+                              "value": null,
+                              "dtype": "str",
+                              "description": "Name of the depth dimension."
+                            },
+                            {
+                              "id": 3,
+                              "gui_name": "Time",
+                              "name": "time",
+                              "value": null,
+                              "dtype": "str",
+                              "description": "Name of the time dimension."
+                            }
+                          ]
+                        },
+                        {
+                          "id": 2,
+                          "gui_name": "V-points",
+                          "name": "V",
+                          "items": [
+                            {
+                              "id": 0,
+                              "gui_name": "Longitude",
+                              "name": "lon",
+                              "value": null,
+                              "dtype": "str",
+                              "description": "Name of the longitude dimension."
+                            },
+                            {
+                              "id": 1,
+                              "gui_name": "Latitude",
+                              "name": "lat",
+                              "value": null,
+                              "dtype": "str",
+                              "description": "Name of the latitude dimension."
+                            },
+                            {
+                              "id": 2,
+                              "gui_name": "Depth",
+                              "name": "depth",
+                              "value": null,
+                              "dtype": "str",
+                              "description": "Name of the depth dimension."
+                            },
+                            {
+                              "id": 3,
+                              "gui_name": "Time",
+                              "name": "time",
+                              "value": null,
+                              "dtype": "str",
+                              "description": "Name of the time dimension."
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "id": 1,
+                      "gui_name": "Coordinates",
+                      "name": "coords",
+                      "items": [
+                        {
+                          "id": 0,
+                          "gui_name": "T-points",
+                          "name": "T",
+                          "items": [
+                            {
+                              "id": 0,
+                              "gui_name": "Longitude",
+                              "name": "lon",
+                              "value": null,
+                              "dtype": "str",
+                              "description": "Name of the longitude coordinate."
+                            },
+                            {
+                              "id": 1,
+                              "gui_name": "Latitude",
+                              "name": "lat",
+                              "value": null,
+                              "dtype": "str",
+                              "description": "Name of the latitude coordinate."
+                            },
+                            {
+                              "id": 2,
+                              "gui_name": "Depth",
+                              "name": "depth",
+                              "value": null,
+                              "dtype": "str",
+                              "description": "Name of the depth coordinate."
+                            },
+                            {
+                              "id": 3,
+                              "gui_name": "Time",
+                              "name": "time",
+                              "value": null,
+                              "dtype": "str",
+                              "description": "Name of the time coordinate."
+                            }
+                          ]
+                        },
+                        {
+                          "id": 1,
+                          "gui_name": "U-points",
+                          "name": "U",
+                          "items": [
+                            {
+                              "id": 0,
+                              "gui_name": "Longitude",
+                              "name": "lon",
+                              "value": null,
+                              "dtype": "str",
+                              "description": "Name of the longitude coordinate."
+                            },
+                            {
+                              "id": 1,
+                              "gui_name": "Latitude",
+                              "name": "lat",
+                              "value": null,
+                              "dtype": "str",
+                              "description": "Name of the latitude coordinate."
+                            },
+                            {
+                              "id": 2,
+                              "gui_name": "Depth",
+                              "name": "depth",
+                              "value": null,
+                              "dtype": "str",
+                              "description": "Name of the depth coordinate."
+                            },
+                            {
+                              "id": 3,
+                              "gui_name": "Time",
+                              "name": "time",
+                              "value": null,
+                              "dtype": "str",
+                              "description": "Name of the time coordinate."
+                            }
+                          ]
+                        },
+                        {
+                          "id": 2,
+                          "gui_name": "V-points",
+                          "name": "V",
+                          "items": [
+                            {
+                              "id": 0,
+                              "gui_name": "Longitude",
+                              "name": "lon",
+                              "value": null,
+                              "dtype": "str",
+                              "description": "Name of the longitude coordinate."
+                            },
+                            {
+                              "id": 1,
+                              "gui_name": "Latitude",
+                              "name": "lat",
+                              "value": null,
+                              "dtype": "str",
+                              "description": "Name of the latitude coordinate."
+                            },
+                            {
+                              "id": 2,
+                              "gui_name": "Depth",
+                              "name": "depth",
+                              "value": null,
+                              "dtype": "str",
+                              "description": "Name of the depth coordinate."
+                            },
+                            {
+                              "id": 3,
+                              "gui_name": "Time",
+                              "name": "time",
+                              "value": null,
+                              "dtype": "str",
+                              "description": "Name of the time coordinate."
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "id": 2,
+                      "gui_name": "Variables",
+                      "name": "vars",
+                      "items": [
+                        {
+                          "id": 0,
+                          "gui_name": "T-points",
+                          "name": "T",
+                          "items": [
+                            {
+                              "id": 0,
+                              "gui_name": "Land-sea mask",
+                              "name": "mask",
+                              "value": "tmask",
+                              "dtype": "str",
+                              "description": "Name of the land-sea mask variable."
+                            },
+                            {
+                              "id": 1,
+                              "gui_name": "Scale factors longitude",
+                              "name": "scale_lon",
+                              "value": "e1t",
+                              "dtype": "str",
+                              "description": "Name of the scale factors longitude variable."
+                            },
+                            {
+                              "id": 2,
+                              "gui_name": "Scale factors latitude",
+                              "name": "scale_lat",
+                              "value": "e2t",
+                              "dtype": "str",
+                              "description": "Name of the scale factors latitude variable."
+                            },
+                            {
+                              "id": 3,
+                              "gui_name": "Scale factors depth",
+                              "name": "scale_depth",
+                              "value": "e3t",
+                              "dtype": "str",
+                              "description": "Name of the scale factors depth variable."
+                            }
+                          ]
+                        },
+                        {
+                          "id": 1,
+                          "gui_name": "U-points",
+                          "name": "U",
+                          "items": [
+                            {
+                              "id": 0,
+                              "gui_name": "Land-sea mask",
+                              "name": "mask",
+                              "value": "umask",
+                              "dtype": "str",
+                              "description": "Name of the land-sea mask variable."
+                            },
+                            {
+                              "id": 1,
+                              "gui_name": "Scale factors longitude",
+                              "name": "scale_lon",
+                              "value": "e1u",
+                              "dtype": "str",
+                              "description": "Name of the scale factors longitude variable."
+                            },
+                            {
+                              "id": 2,
+                              "gui_name": "Scale factors latitude",
+                              "name": "scale_lat",
+                              "value": "e2u",
+                              "dtype": "str",
+                              "description": "Name of the scale factors latitude variable."
+                            },
+                            {
+                              "id": 3,
+                              "gui_name": "Scale factors depth",
+                              "name": "scale_depth",
+                              "value": "e3t",
+                              "dtype": "str",
+                              "description": "Name of the scale factors depth variable."
+                            }
+                          ]
+                        },
+                        {
+                          "id": 2,
+                          "gui_name": "V-points",
+                          "name": "V",
+                          "items": [
+                            {
+                              "id": 0,
+                              "gui_name": "Land-sea mask",
+                              "name": "mask",
+                              "value": "vmask",
+                              "dtype": "str",
+                              "description": "Name of the land-sea mask variable."
+                            },
+                            {
+                              "id": 1,
+                              "gui_name": "Scale factors longitude",
+                              "name": "scale_lon",
+                              "value": "e1v",
+                              "dtype": "str",
+                              "description": "Name of the scale factors longitude variable."
+                            },
+                            {
+                              "id": 2,
+                              "gui_name": "Scale factors latitude",
+                              "name": "scale_lat",
+                              "value": "e2v",
+                              "dtype": "str",
+                              "description": "Name of the scale factors latitude variable."
+                            },
+                            {
+                              "id": 3,
+                              "gui_name": "Scale factors depth",
+                              "name": "scale_depth",
+                              "value": "e3t",
+                              "dtype": "str",
+                              "description": "Name of the scale factors depth variable."
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "id": 1,
+                  "gui_name": "Ocean",
+                  "name": "ocean",
+                  "items": [
+                    {
+                      "id": 0,
+                      "gui_name": "Dimensions",
+                      "name": "dims",
+                      "items": [
+                        {
+                          "id": 0,
+                          "gui_name": "T-points",
+                          "name": "T",
+                          "items": [
+                            {
+                              "id": 0,
+                              "gui_name": "Longitude",
+                              "name": "lon",
+                              "value": null,
+                              "dtype": "str",
+                              "description": "Name of the longitude dimension."
+                            },
+                            {
+                              "id": 1,
+                              "gui_name": "Latitude",
+                              "name": "lat",
+                              "value": null,
+                              "dtype": "str",
+                              "description": "Name of the latitude dimension."
+                            },
+                            {
+                              "id": 2,
+                              "gui_name": "Depth",
+                              "name": "depth",
+                              "value": null,
+                              "dtype": "str",
+                              "description": "Name of the depth dimension."
+                            },
+                            {
+                              "id": 3,
+                              "gui_name": "Time",
+                              "name": "time",
+                              "value": null,
+                              "dtype": "str",
+                              "description": "Name of the time dimension."
+                            }
+                          ]
+                        },
+                        {
+                          "id": 1,
+                          "gui_name": "U-points",
+                          "name": "U",
+                          "items": [
+                            {
+                              "id": 0,
+                              "gui_name": "Longitude",
+                              "name": "lon",
+                              "value": null,
+                              "dtype": "str",
+                              "description": "Name of the longitude dimension."
+                            },
+                            {
+                              "id": 1,
+                              "gui_name": "Latitude",
+                              "name": "lat",
+                              "value": null,
+                              "dtype": "str",
+                              "description": "Name of the latitude dimension."
+                            },
+                            {
+                              "id": 2,
+                              "gui_name": "Depth",
+                              "name": "depth",
+                              "value": null,
+                              "dtype": "str",
+                              "description": "Name of the depth dimension."
+                            },
+                            {
+                              "id": 3,
+                              "gui_name": "Time",
+                              "name": "time",
+                              "value": null,
+                              "dtype": "str",
+                              "description": "Name of the time dimension."
+                            }
+                          ]
+                        },
+                        {
+                          "id": 2,
+                          "gui_name": "V-points",
+                          "name": "V",
+                          "items": [
+                            {
+                              "id": 0,
+                              "gui_name": "Longitude",
+                              "name": "lon",
+                              "value": null,
+                              "dtype": "str",
+                              "description": "Name of the longitude dimension."
+                            },
+                            {
+                              "id": 1,
+                              "gui_name": "Latitude",
+                              "name": "lat",
+                              "value": null,
+                              "dtype": "str",
+                              "description": "Name of the latitude dimension."
+                            },
+                            {
+                              "id": 2,
+                              "gui_name": "Depth",
+                              "name": "depth",
+                              "value": null,
+                              "dtype": "str",
+                              "description": "Name of the depth dimension."
+                            },
+                            {
+                              "id": 3,
+                              "gui_name": "Time",
+                              "name": "time",
+                              "value": null,
+                              "dtype": "str",
+                              "description": "Name of the time dimension."
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "id": 1,
+                      "gui_name": "Coordinates",
+                      "name": "coords",
+                      "items": [
+                        {
+                          "id": 0,
+                          "gui_name": "T-points",
+                          "name": "T",
+                          "items": [
+                            {
+                              "id": 0,
+                              "gui_name": "Longitude",
+                              "name": "lon",
+                              "value": null,
+                              "dtype": "str",
+                              "description": "Name of the longitude coordinate."
+                            },
+                            {
+                              "id": 1,
+                              "gui_name": "Latitude",
+                              "name": "lat",
+                              "value": null,
+                              "dtype": "str",
+                              "description": "Name of the latitude coordinate."
+                            },
+                            {
+                              "id": 2,
+                              "gui_name": "Depth",
+                              "name": "depth",
+                              "value": null,
+                              "dtype": "str",
+                              "description": "Name of the depth coordinate."
+                            },
+                            {
+                              "id": 3,
+                              "gui_name": "Time",
+                              "name": "time",
+                              "value": null,
+                              "dtype": "str",
+                              "description": "Name of the time coordinate."
+                            }
+                          ]
+                        },
+                        {
+                          "id": 1,
+                          "gui_name": "U-points",
+                          "name": "U",
+                          "items": [
+                            {
+                              "id": 0,
+                              "gui_name": "Longitude",
+                              "name": "lon",
+                              "value": null,
+                              "dtype": "str",
+                              "description": "Name of the longitude coordinate."
+                            },
+                            {
+                              "id": 1,
+                              "gui_name": "Latitude",
+                              "name": "lat",
+                              "value": null,
+                              "dtype": "str",
+                              "description": "Name of the latitude coordinate."
+                            },
+                            {
+                              "id": 2,
+                              "gui_name": "Depth",
+                              "name": "depth",
+                              "value": null,
+                              "dtype": "str",
+                              "description": "Name of the depth coordinate."
+                            },
+                            {
+                              "id": 3,
+                              "gui_name": "Time",
+                              "name": "time",
+                              "value": null,
+                              "dtype": "str",
+                              "description": "Name of the time coordinate."
+                            }
+                          ]
+                        },
+                        {
+                          "id": 2,
+                          "gui_name": "V-points",
+                          "name": "V",
+                          "items": [
+                            {
+                              "id": 0,
+                              "gui_name": "Longitude",
+                              "name": "lon",
+                              "value": null,
+                              "dtype": "str",
+                              "description": "Name of the longitude coordinate."
+                            },
+                            {
+                              "id": 1,
+                              "gui_name": "Latitude",
+                              "name": "lat",
+                              "value": null,
+                              "dtype": "str",
+                              "description": "Name of the latitude coordinate."
+                            },
+                            {
+                              "id": 2,
+                              "gui_name": "Depth",
+                              "name": "depth",
+                              "value": null,
+                              "dtype": "str",
+                              "description": "Name of the depth coordinate."
+                            },
+                            {
+                              "id": 3,
+                              "gui_name": "Time",
+                              "name": "time",
+                              "value": null,
+                              "dtype": "str",
+                              "description": "Name of the time coordinate."
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "id": 2,
+                      "gui_name": "Variables",
+                      "name": "vars",
+                      "items": [
+                        {
+                          "id": 0,
+                          "gui_name": "Temperature",
+                          "name": "temp",
+                          "value": null,
+                          "dtype": "str",
+                          "description": "Temperature at points T in degC."
+                        },
+                        {
+                          "id": 1,
+                          "gui_name": "Salinity",
+                          "name": "sal",
+                          "value": null,
+                          "dtype": "str",
+                          "description": "Salinity at points T in psu."
+                        },
+                        {
+                          "id": 2,
+                          "gui_name": "Sea surface height",
+                          "name": "ssh",
+                          "value": null,
+                          "dtype": "str",
+                          "description": "Sea Surface Height at points T in m."
+                        },
+                        {
+                          "id": 3,
+                          "gui_name": "Velocity - Zonal component",
+                          "name": "velu",
+                          "value": null,
+                          "dtype": "str",
+                          "description": "Zonal Velocity at points U (if grid_type is staggered) or T (if grid_type is unstaggered) in m/s."
+                        },
+                        {
+                          "id": 4,
+                          "gui_name": "Velocity - Meridional component",
+                          "name": "velv",
+                          "value": null,
+                          "dtype": "str",
+                          "description": "Meridional Velocity at points V (if grid_type is staggered) or T (if grid_type is unstaggered) in m/s."
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": 2,
+          "gui_name": "Interpolation",
+          "name": "interpolate",
+          "items": [
+            {
+              "id": 0,
+              "gui_name": "Method",
+              "name": "method",
+              "value": "bilin",
+              "dtype": "str",
+              "constraints": {
+                "options": [
+                  "bilin",
+                  "bicub",
+                  "distwgt"
+                ]
+              },
+              "description": "interpolate method used to map the input data on the downscaled grid"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "gui_name": "Tidal forcing generation",
+      "name": "regridPreTide",
+      "description": "Generation of the regridded tidal forcing files.",
+      "items": [
+      ]
+    },
+    {
+      "id": 6,
+      "gui_name": "Simulation",
+      "name": "simulation",
+      "description": "Run the simulation.",
+      "items": [
+      ]
+    }
+  ]
+}
+
