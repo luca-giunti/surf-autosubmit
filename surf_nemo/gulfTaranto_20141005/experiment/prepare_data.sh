@@ -1,6 +1,7 @@
 #!/bin/bash
 
-cd data || exit
+export scratch_dir_remote="/home/onyxia/work/test/linuxserver.io/"
+cd ${scratch_dir_remote}/data || exit
 
 # Inflate the main dataset
 tar -xzf surf_datasets_tailored.tar.gz

@@ -1,6 +1,7 @@
 #!/bin/bash
 
-cd data || exit
+export scratch_dir_remote="/home/onyxia/work/test/linuxserver.io/"
+cd ${scratch_dir_remote}/data || exit
 
 export task_id="surface_bc"
 export container_name="gulfTaranto_20141005_${task_id}"
