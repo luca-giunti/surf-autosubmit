@@ -2,9 +2,12 @@
 
 cd data || exit
 
+export task_id="ocean_ic"
+export id_exp="gulfTaranto_20141005_${task_id}"
+export config_free_filename="configBase_${task_id}.json"
+
 # Set container variables
 export nproc=1
-export id_exp="gulfTaranto_20141005"
 export memory="4g"
 export shm_size="4g"
 export tmp_cleanup="true"
@@ -13,7 +16,6 @@ export overwrite="false"
 # Set user type and config free
 export USER_TYPE="base"
 export path_from_gui_host="$(pwd)/from_GUI"
-export config_free_filename="configBase_ocean_ic.json"
 
 # Set mount points for shared volumes on the host
 export path_experiments_host="/tmp/Experiments" && mkdir -p $path_experiments_host
@@ -49,4 +51,4 @@ docker run -e ID_EXP=$id_exp \
             --shm-size $shm_size \
             $image_name
 
-docker rm gulfTaranto_20141005
+docker rm "gulfTaranto_20141005_${task_id}"
