@@ -1,5 +1,10 @@
 JOBS:
+  PREPATE_DATA:
+    FILE: surf_nemo/gulfTaranto_20141005/experiment/prepare_data.sh
+    PLATFORM: LOCAL
+    RUNNING: once
   RUN:
     FILE: surf_nemo/gulfTaranto_20141005/experiment/run.sh
     PLATFORM: LOCAL
     RUNNING: once
+    DEPENDENCIES: PREPATE_DATA
