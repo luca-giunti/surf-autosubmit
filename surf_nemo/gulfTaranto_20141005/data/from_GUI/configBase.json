@@ -219,7 +219,7 @@
                   "id": 0,
                   "gui_name": "Downscaled grid generation",
                   "name": "grid_generation",
-                  "value": false,
+                  "value": true,
                   "dtype": "bool",
                   "description": "Enables the execution the child grid generation task."
                 },
@@ -227,7 +227,7 @@
                   "id": 1,
                   "gui_name": "Surface boundary conditionsn generation",
                   "name": "surface_bc",
-                  "value": false,
+                  "value": true,
                   "dtype": "bool",
                   "description": "Enables the generation of the regridded atmospheric forcings files, used for surface boundary conditions."
                 },
@@ -235,7 +235,7 @@
                   "id": 2,
                   "gui_name": "Initial conditions generation",
                   "name": "ocean_ic",
-                  "value": false,
+                  "value": true,
                   "dtype": "bool",
                   "description": "Enables the generation of the regridded ocean files for the initial conditions."
                 },
@@ -243,7 +243,7 @@
                   "id": 3,
                   "gui_name": "Lateral boundary conditions generation",
                   "name": "lateral_bc",
-                  "value": false,
+                  "value": true,
                   "dtype": "bool",
                   "description": "Enables the generation of the regridded ocean files for the lateral boundary conditions."
                 },
