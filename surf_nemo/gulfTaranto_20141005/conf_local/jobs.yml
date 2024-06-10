@@ -3,10 +3,15 @@ JOBS:
     FILE: surf_nemo/gulfTaranto_20141005/scripts/prepare_data.sh
     PLATFORM: LOCAL
     RUNNING: once
+  PREPARE_ENV:
+    FILE: surf_nemo/gulfTaranto_20141005/scripts/prepare_env.sh
+    PLATFORM: LOCAL
+    RUNNING: once
   PREPARE_EXP:
     FILE: surf_nemo/gulfTaranto_20141005/scripts/prepare_exp.sh
     PLATFORM: LOCAL
     RUNNING: once
+    DEPENDENCIES: PREPARE_ENV
   GRID_GENERATION:
     FILE: surf_nemo/gulfTaranto_20141005/scripts/run_grid_generation.sh
     PLATFORM: LOCAL
