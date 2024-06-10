@@ -178,7 +178,7 @@
                   "id": 1,
                   "gui_name": "Number of days",
                   "name": "n_days",
-                  "value": 6,
+                  "value": 3,
                   "dtype": "int",
                   "constraints": {
                     "min": 1
