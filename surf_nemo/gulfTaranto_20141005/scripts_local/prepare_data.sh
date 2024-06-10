@@ -1,7 +1,6 @@
 #!/bin/bash
 
-export scratch_dir_path="."
-cd ${scratch_dir_path}/data || exit
+cd $exp_folder/data || exit
 
 # Inflate the main dataset
 tar -xzf surf_datasets_tailored.tar.gz
